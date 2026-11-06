@@ -13,7 +13,7 @@ const MAX_BYTES = 200 * 1024
 
 /**
  * What the signed-out screens (sign-in, sign-up, password reset, MFA, the OAuth consent screen)
- * show above the form. Defaults: Hemrock's mark and no text.
+ * show above the form. Defaults: the default app icon and no text.
  */
 export function SignInSection({ logo, title, onSaved }: { logo: string | null; title: string | null; onSaved: () => void }) {
   const [logoValue, setLogoValue] = useState<string | null>(logo)
@@ -76,7 +76,7 @@ export function SignInSection({ logo, title, onSaved }: { logo: string | null; t
     <Section title="Sign-in screen">
       <p className="text-xs text-muted-foreground mb-4">
         What the sign-in, sign-up and password screens show above the form. Without a logo it is
-        Hemrock&apos;s mark; without text, nothing else.
+        the default app icon; without text, nothing else.
       </p>
 
       <div className="rounded-lg border bg-muted/40 py-6 mb-4" aria-label="Preview">
@@ -95,7 +95,7 @@ export function SignInSection({ logo, title, onSaved }: { logo: string | null; t
         </label>
         {logoValue && (
           <Button variant="ghost" size="sm" onClick={resetLogo} disabled={busy !== null}>
-            <RotateCcw className="h-3.5 w-3.5" /> Use Hemrock&apos;s mark
+            <RotateCcw className="h-3.5 w-3.5" /> Use the default app icon
           </Button>
         )}
         {busy === 'logo' && <Loader2 className="h-3.5 w-3.5 animate-spin" />}

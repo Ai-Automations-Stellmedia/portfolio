@@ -14,7 +14,7 @@ export function AuthBrandProvider({ brand, children }: { brand: AuthBrand; child
 
 /**
  * The logo, and the text under it when the fund has set one, linked home. Without a provider
- * (or with nothing set) it is Hemrock's mark alone: no product or company name.
+ * (or with nothing set) it is the default app icon alone: no product or company name.
  */
 export function AuthWordmark() {
   const { logo, title } = useContext(AuthBrandContext)

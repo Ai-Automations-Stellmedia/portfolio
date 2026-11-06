@@ -260,7 +260,7 @@ function iconEntry(size: IconSize, maskable: boolean, variant: IconVariant) {
 }
 
 /**
- * The browser-tab icons, both generated from public/brand/hemrock-mark.svg by
+ * The browser-tab icons, both generated from public/brand/app-mark.svg by
  * scripts/generate-favicons.mjs. The .ico first and the SVG after it: a browser that reads
  * SVG takes the later link, and one that doesn't has the .ico.
  *

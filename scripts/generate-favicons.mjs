@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Generate the browser-tab icons from the mark, public/brand/hemrock-mark.svg.
+ * Generate the browser-tab icons from the mark, public/brand/app-mark.svg.
  *
  *   node scripts/generate-favicons.mjs
  *
@@ -22,7 +22,7 @@ import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const source = fs.readFileSync(path.join(root, 'public', 'brand', 'hemrock-mark.svg'), 'utf8')
+const source = fs.readFileSync(path.join(root, 'public', 'brand', 'app-mark.svg'), 'utf8')
 // The mark is wider than it is tall; an icon is square. Centre its box in a square whose
 // side is the longer dimension, rather than letting the renderer stretch or crop it.
 const [x, y, w, h] = source.match(/viewBox="([^"]+)"/)[1].split(/[\s,]+/).map(Number)

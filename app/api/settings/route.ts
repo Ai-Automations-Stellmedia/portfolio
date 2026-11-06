@@ -239,7 +239,7 @@ export async function PATCH(req: NextRequest) {
   const settingsUpdates: Record<string, unknown> = {}
 
   // The sign-in screens' logo and text (components/auth-brand.tsx). Null clears either: no
-  // logo shows Hemrock's mark, no text shows none.
+  // logo shows the default app icon, no text shows none.
   if (signInLogo !== undefined) {
     if (signInLogo !== null) {
       if (!isSafeLogoDataUri(signInLogo)) {

@@ -1,6 +1,6 @@
 /** The sign-in screens' logo and text, from Settings → Fund. Shared by the loader and the UI. */
 export interface AuthBrand {
-  /** A data:image/ URL, or null for Hemrock's mark. */
+  /** A data:image/ URL, or null for the default app icon. */
   logo: string | null
   /** The line under the logo, or null for none. */
   title: string | null

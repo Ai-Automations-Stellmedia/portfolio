@@ -8,7 +8,7 @@ import { VEHICLE_KINDS } from '@/lib/vehicle-kinds'
 const ENTITY = {
   type: 'object',
   properties: {
-    name: { type: 'string', description: 'e.g. "Fund I", "Acme SPV", "Hemrock Management".' },
+    name: { type: 'string', description: 'e.g. "Fund I", "Acme SPV", "Example Management".' },
     kind: { type: 'string', enum: [...VEHICLE_KINDS], description: 'Default fund. manco needs the management_company product.' },
     vintageYear: { type: 'integer' },
   },

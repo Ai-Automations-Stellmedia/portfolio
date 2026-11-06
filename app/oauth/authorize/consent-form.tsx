@@ -107,7 +107,7 @@ export function ConsentForm({ clientName, fundName, userEmail, returnTo, willWri
           {newFund && (
             <div className="space-y-1.5">
               <Label htmlFor="fund-name">Fund or firm name</Label>
-              <Input id="fund-name" value={newFundName} onChange={e => setNewFundName(e.target.value)} placeholder="e.g. Hemrock Ventures" maxLength={200} autoFocus />
+              <Input id="fund-name" value={newFundName} onChange={e => setNewFundName(e.target.value)} placeholder="e.g. Your Fund" maxLength={200} autoFocus />
             </div>
           )}
           {/* The permissions, split read vs write. The write block is the one that matters,

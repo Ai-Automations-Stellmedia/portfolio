@@ -5,11 +5,11 @@ import path from 'node:path'
 import { MARK_ICON_VIEWBOX, MARK_PATHS, MARK_STROKE, MARK_VIEWBOX } from './brand-mark'
 
 /**
- * lib/brand-mark.ts is a hand copy of public/brand/hemrock-mark.svg, for code that draws the
+ * lib/brand-mark.ts is a hand copy of public/brand/app-mark.svg, for code that draws the
  * mark without reading a file. Pin the copy to the source, so a new mark can't reach the
  * tab icon (generated from the file) and miss the sign-in screen and install icons.
  */
-const source = fs.readFileSync(path.join(__dirname, '..', 'public', 'brand', 'hemrock-mark.svg'), 'utf8')
+const source = fs.readFileSync(path.join(__dirname, '..', 'public', 'brand', 'app-mark.svg'), 'utf8')
 const paths = [...source.matchAll(/<path([^>]*)\/>/g)].map(m => m[1])
 const attr = (s: string, name: string) => s.match(new RegExp(`\\s${name}="([^"]+)"`))?.[1]
 

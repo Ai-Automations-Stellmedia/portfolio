@@ -122,7 +122,7 @@ docker compose --env-file .env.local up -d --build
 docker compose logs -f app
 ```
 
-Open http://localhost:3000. The port binds to the host's loopback interface; for production, put an HTTPS reverse proxy on that host in front of port 3000 and complete Step 5 below. Supabase remains external: this Compose file does not create a database or apply migrations. If Supabase runs on the same machine, `localhost` inside the app container points to the container itself; use a Supabase address reachable from both the container and users' browsers.
+Compose publishes no host ports. Connect your HTTPS reverse proxy to the same Docker network and forward requests to `app:3000`, then complete Step 5 below. The app cannot be opened directly at localhost:3000 with this configuration. Supabase remains external: this Compose file does not create a database or apply migrations. If Supabase runs on the same machine, `localhost` inside the app container points to the container itself; use a Supabase address reachable from both the container and users' browsers.
 
 The image uses the existing Next.js production server, runs as a non-root user, and includes system Chromium for PDF exports. Building requires network access to npm, Debian packages, and Google Fonts. Public `NEXT_PUBLIC_*` settings are passed at build time; rebuild when they change ([Next.js environment variables](https://nextjs.org/docs/app/guides/environment-variables)). Server secrets are loaded from `.env.local` only at runtime; environment files are excluded from the build context. Do not put server secrets in build arguments.
 

@@ -175,7 +175,7 @@ export default function SettingsPage() {
             />
             <TeamSection isAdmin={settings.isAdmin} featureVisibility={settings.featureVisibility} />
             <WhitelistSection />
-            <VersionSection appVersion={settings.appVersion} updateAvailable={settings.updateAvailable} />
+            <VersionSection appVersion={settings.appVersion} />
             {/* Investment-vehicle management moved out of Settings: add/edit (name, type, vintage,
                 aliases, active) on /investments; GP linking on /funds/status. */}
             {/* How the entity lists are sectioned — one group per entity, "Other" for the rest. */}

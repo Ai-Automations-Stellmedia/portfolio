@@ -1,18 +1,18 @@
 import { describe, expect, it } from 'vitest'
-import { createElement } from 'react'
+import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { AuthBrandProvider, AuthWordmark } from '@/components/auth-brand'
 import { MARK_PATHS } from '@/lib/brand-mark'
 
 /**
  * The signed-out screens show the fund's sign-in logo and text from Settings → Fund. Unset, they
- * show Hemrock's mark and no words at all: not "Portfolio", not "Hemrock".
+ * show the default app icon and no words at all: not "Portfolio", not "Hemrock".
  */
 const render = (brand?: { logo: string | null; title: string | null }) =>
-  renderToStaticMarkup(brand ? createElement(AuthBrandProvider, { brand, children: createElement(AuthWordmark) }) : createElement(AuthWordmark))
+  renderToStaticMarkup(brand ? <AuthBrandProvider brand={brand}><AuthWordmark /></AuthBrandProvider> : <AuthWordmark />)
 
 describe('the sign-in mark', () => {
-  it("is Hemrock's mark with no text by default", () => {
+  it("is the default app icon with no text by default", () => {
     for (const html of [render(), render({ logo: null, title: null })]) {
       expect(html).toContain(MARK_PATHS[0].d)
       expect(html).not.toContain('<h1')

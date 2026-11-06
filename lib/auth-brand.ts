@@ -4,7 +4,7 @@ import { DEFAULT_AUTH_BRAND, type AuthBrand } from '@/lib/auth-brand-shared'
 
 /**
  * What the signed-out screens show above the form: the fund's sign-in logo and line of text,
- * from Settings → Fund. Unset, the logo is Hemrock's mark and there is no text.
+ * from Settings → Fund. Unset, the logo is the default app icon and there is no text.
  *
  * A deployment hosts one fund (lib/pwa.ts loadPwaBrand resolves it the same way), and these
  * screens have no session, so the read is the service role's. Never throws: a fresh install

@@ -40,7 +40,7 @@ import {
   type VehicleCarryTerms,
 } from '@portfolio/fund-engine'
 
-export const ENGINE = { name: 'Hemrock Portfolio accounting', version: '@portfolio/fund-engine 0.2.0' }
+export const ENGINE = { name: 'Portfolio accounting', version: '@portfolio/fund-engine 0.2.0' }
 
 class AdapterError extends Error {
   readonly code: string

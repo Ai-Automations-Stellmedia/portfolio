@@ -1,29 +1,6 @@
-/**
- * Where the product lives outside this deployment.
- *
- * One module so the footer, the support page, the sign-in pages and the settings
- * version card agree, and so a self-hoster can find every outbound link in one
- * place. The product is Portfolio; the company behind it is Hemrock. A fund's own
- * deployment has neither name in its UI beyond these links, which is the point of
- * the fund-themeable `--primary` and the fixed `--brand` (DESIGN.md).
- *
- * The legal pages are env-driven: a fund that redeploys under its own name has its
- * own terms, or none, and a link to someone else's is worse than no link. Unset
- * means the links do not render.
- */
+/** Deployment links and public origin. */
 export const PRODUCT_NAME = 'Portfolio'
-export const PRODUCT_SITE = 'https://www.hemrock.com/portfolio'
-export const PRODUCT_DOCS = 'https://www.hemrock.com/docs/reporting'
-export const PRODUCT_REPO = 'https://github.com/tdavidson/reporting'
-export const PRODUCT_LICENSE = `${PRODUCT_REPO}/blob/main/LICENSE.md`
-export const PRODUCT_RELEASES = `${PRODUCT_REPO}/releases`
-export const PRODUCT_ISSUES = `${PRODUCT_REPO}/issues`
-export const PRODUCT_DEMO = 'https://www.hemrock.com/demo'
-
-export const COMPANY_NAME = 'Hemrock'
-export const COMPANY_SITE = 'https://www.hemrock.com'
-export const COMPANY_CONTACT = 'https://www.hemrock.com/contact'
-export const COMPANY_EMAIL = 'hello@hemrock.com'
+export const PRODUCT_LICENSE = '/auth/license'
 
 export const TERMS_URL = process.env.NEXT_PUBLIC_TERMS_URL || null
 export const PRIVACY_URL = process.env.NEXT_PUBLIC_PRIVACY_URL || null

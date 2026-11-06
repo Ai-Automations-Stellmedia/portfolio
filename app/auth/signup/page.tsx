@@ -10,7 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { createClient } from '@/lib/supabase/client'
 import { OtpCodeForm } from '@/components/auth/otp-code-form'
-import { COMPANY_CONTACT, PRIVACY_URL, PRODUCT_LICENSE, TERMS_URL } from '@/lib/site-links'
+import { PRIVACY_URL, PRODUCT_LICENSE, TERMS_URL } from '@/lib/site-links'
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('')
@@ -176,12 +176,6 @@ export default function SignUpPage() {
               <Alert className="!border-warning/50 !bg-warning-subtle dark:!bg-warning-subtle/30 !text-warning">
                 <AlertDescription className="text-sm space-y-2">
                   <p>This email is not authorized to sign up on this deployment. Ask its administrator to add it.</p>
-                  <p>
-                    This software is available to download and install on your own servers, subject to the{' '}
-                    <a href={PRODUCT_LICENSE} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary/80">license</a>.
-                    For help setting up your own, contact{' '}
-                    <a href={COMPANY_CONTACT} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary/80">Taylor</a>.
-                  </p>
                 </AlertDescription>
               </Alert>
             )}

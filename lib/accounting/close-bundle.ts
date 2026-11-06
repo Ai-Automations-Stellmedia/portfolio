@@ -201,7 +201,7 @@ export async function closeBundleZip(bundle: StoredCloseBundle, group: string): 
     `Close bundle for ${group}, period ${bundle.periodStart} to ${bundle.periodEnd}.`,
     `Bundle SHA-256 (of manifest.json): ${bundle.sha256}`,
     '',
-    'Check it with the open fund engine (packages/fund-engine in the Hemrock Portfolio repository):',
+    'Check it with the open fund engine (packages/fund-engine in the deployment source):',
     `  node packages/fund-engine/bin/fund-engine.mjs verify --bundle ${dir} --expect-sha256 ${bundle.sha256}`,
     '',
     'VERIFY.txt is not part of the bundle and is not hashed.',

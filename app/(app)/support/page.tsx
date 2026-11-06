@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Github, Scale, ExternalLink, BookOpen, Home, Newspaper, ListChecks, Globe, Building2, ClipboardCheck, Mail, Upload, Send, Settings, MessageSquare, Monitor, PanelLeftClose, Sparkles, Shield, ShieldCheck, Handshake, Users, ArrowDownCircle, DollarSign, FileText, Briefcase, Crown, Lightbulb, Microscope } from 'lucide-react'
+import { Home, Newspaper, ListChecks, Globe, Building2, ClipboardCheck, Mail, Upload, Send, Settings, MessageSquare, Monitor, PanelLeftClose, Sparkles, Shield, ShieldCheck, Handshake, Users, ArrowDownCircle, DollarSign, FileText, Briefcase, Crown, Lightbulb, Microscope } from 'lucide-react'
 import { AnalystToggleButton } from '@/components/analyst-button'
 import { AnalystPanel } from '@/components/analyst-panel'
-import { PRIVACY_URL, PRODUCT_DOCS, PRODUCT_SITE, TERMS_URL } from '@/lib/site-links'
+import { PRIVACY_URL, PRODUCT_LICENSE, TERMS_URL } from '@/lib/site-links'
 import { AREAS } from '@/lib/agent/getting-started'
 
 export const metadata: Metadata = { title: 'Support' }
@@ -64,59 +64,14 @@ export default function SupportPage() {
             <h2 className="text-base font-medium mb-2">Need help?</h2>
             <p className="text-muted-foreground">
               For questions about your fund&apos;s data, companies, metrics, or account access,
-              contact the admin on your team. For technical questions, feature requests, or bug reports,
-              reach out to Taylor Davidson at{' '}
-              <a
-                href="https://www.hemrock.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground underline underline-offset-4 hover:text-foreground/80"
-              >
-                Hemrock
-              </a>
-              {' '}or open an issue on{' '}
-              <a
-                href="https://github.com/tdavidson/reporting"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground underline underline-offset-4 hover:text-foreground/80"
-              >
-                GitHub
-              </a>
-              .
+              contact the administrator on your team. For technical support, contact the team managing this deployment.
             </p>
           </div>
 
-          {/* The links the in-app footer used to carry on every page. It no longer appears on
-              /start, so this is where they are guaranteed to be found. */}
           <div id="links" className="rounded-card border bg-card p-5">
             <h2 className="text-base font-medium mb-3">Links</h2>
             <ul className="flex flex-wrap gap-x-6 gap-y-2 text-muted-foreground">
-              <li>
-                <a href="https://hemrock.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
-                  <ExternalLink className="h-3.5 w-3.5" />Hemrock
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/tdavidson/reporting" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
-                  <Github className="h-3.5 w-3.5" />GitHub
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/tdavidson/reporting/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
-                  <Scale className="h-3.5 w-3.5" />License
-                </a>
-              </li>
-              <li>
-                <a href={PRODUCT_SITE} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
-                  <ExternalLink className="h-3.5 w-3.5" />Product
-                </a>
-              </li>
-              <li>
-                <a href={PRODUCT_DOCS} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
-                  <BookOpen className="h-3.5 w-3.5" />Docs
-                </a>
-              </li>
+              <li><a href={PRODUCT_LICENSE} className="hover:text-foreground underline underline-offset-4">License</a></li>
               {TERMS_URL && (
                 <li>
                   <a href={TERMS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Terms</a>
@@ -187,54 +142,12 @@ export default function SupportPage() {
         <div id="setup" className="pl-4 border-l-2 border-border">
           <h3 className="text-base font-medium mb-2">Self-hosting &amp; license</h3>
           <p className="text-muted-foreground mb-2">
-            Under the hood, the platform uses a database, authentication, file storage, inbound email
-            processing, and an AI provider, with prebuilt integrations for several third-party services
-            across the stack. Download it from{' '}
-            <a
-              href="https://github.com/tdavidson/reporting"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-foreground/80"
-            >
-              GitHub
-            </a>
-            {' '}and deploy it on your own accounts; DOCS.md in the repository is the full installation guide
-            &mdash; database, environment variables, encryption, email providers, AI and deployment. You control
-            the operational details and the costs. Most services in the stack have generous free tiers; AI
-            features need an API key from Anthropic, OpenAI or OpenRouter, which are paid accounts.
+            This deployment uses Supabase for its database, authentication and storage. See DOCS.md
+            in the deployment source for environment variables, migrations, email and Docker setup.
           </p>
-          <p id="license" className="text-muted-foreground mb-2">
-            <strong>License:</strong> Apache License 2.0. You are free to use it, modify it, and deploy it on
-            your own infrastructure &mdash; for your own fund or commercially. There are no per-seat fees and no
-            single-fund restriction. It includes an express patent grant, and the software is provided as-is,
-            without warranty of any kind. Per its trademark clause, it does not grant rights to the
-            &ldquo;Hemrock&rdquo; or &ldquo;Unstructured Ventures&rdquo; names or logos &mdash; if you fork or
-            redeploy the software, please use your own branding. Read the{' '}
-            <a
-              href="https://github.com/tdavidson/reporting/blob/main/LICENSE.md"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-foreground/80"
-            >
-              full license
-            </a>
-            .
-          </p>
-          <p className="text-muted-foreground">
-            <a
-              href="https://www.hemrock.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-foreground/80"
-            >
-              Taylor Davidson
-            </a>
-            {' '}of Hemrock offers paid setup and support on your own infrastructure and accounts, including
-            onboarding your portfolio data &mdash; write to{' '}
-            <a href="mailto:hello@hemrock.com" className="text-foreground underline underline-offset-4 hover:text-foreground/80">
-              hello@hemrock.com
-            </a>
-            .
+          <p id="license" className="text-muted-foreground">
+            Licensed under the Apache License 2.0. Read the{' '}
+            <a href={PRODUCT_LICENSE} className="underline underline-offset-4">full license</a>.
           </p>
         </div>
 
@@ -526,16 +439,7 @@ export default function SupportPage() {
           </div>
           <p className="text-muted-foreground">
             For detailed technical setup instructions &mdash; configuring Supabase, environment
-            variables, encryption keys, email providers, deployment, and more &mdash; see DOCS.md in the{' '}
-            <a
-              href="https://github.com/tdavidson/reporting"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-foreground/80"
-            >
-              repository on GitHub
-            </a>
-            .
+            variables, encryption keys, email providers, deployment, and more &mdash; see DOCS.md in the deployment source.
           </p>
         </div>
 
@@ -1218,22 +1122,9 @@ export default function SupportPage() {
             <ArrowDownCircle className="h-4 w-4 text-muted-foreground" />
             Version updates
           </h2>
-          <p className="text-muted-foreground mb-2">
-            The platform includes a built-in update checker that compares your installed version against
-            the latest release on GitHub. When a newer version is available, admins will see an{' '}
-            <strong className="text-foreground">Updates</strong> link in the sidebar with an indicator dot.
-          </p>
-          <p className="text-muted-foreground mb-2">
-            The Updates page shows your current version, the latest available version, release notes, and
-            a link to the GitHub release. The check runs automatically and is cached for one hour, so
-            it does not slow down normal usage.
-          </p>
           <p className="text-muted-foreground">
-            Each installation has a unique <strong className="text-foreground">Installation ID</strong> &mdash;
-            a UUID generated automatically in your database. This ID is specific to your deployment and is
-            shown at the bottom of the Updates page, and is sent to GitHub with the version check. Only admins
-            can see the Updates page; non-admin users are not shown the update indicator. (Not to be confused with
-            Portfolio &rarr; Updates, which is company updates.)
+            Admins can see the installed version on the Updates page. To update, rebuild and redeploy
+            the app from your deployment source and apply any new database migrations.
           </p>
         </div>
 

@@ -1,7 +1,7 @@
 import { MARK_PATHS, MARK_STROKE, MARK_VIEWBOX } from '@/lib/brand-mark'
 
 /**
- * Hemrock's mark, stroked in currentColor so it follows the text colour and theme. It is a
+ * the default app icon, stroked in currentColor so it follows the text colour and theme. It is a
  * little wider than tall: size it by height with `w-auto`.
  */
 export function BrandMark({ className }: { className?: string }) {
