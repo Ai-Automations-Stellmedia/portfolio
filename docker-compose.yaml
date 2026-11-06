@@ -4,22 +4,22 @@ services:
   app:
     build:
       context: .
-    args:
-      NEXT_PUBLIC_SUPABASE_URL: "${NEXT_PUBLIC_SUPABASE_URL:?Set NEXT_PUBLIC_SUPABASE_URL}"
-      NEXT_PUBLIC_SUPABASE_ANON_KEY: "${NEXT_PUBLIC_SUPABASE_ANON_KEY:?Set NEXT_PUBLIC_SUPABASE_ANON_KEY}"
-      NEXT_PUBLIC_SITE_URL: "${NEXT_PUBLIC_SITE_URL:-https://portfolio.stelltech.ai}"
-      NEXT_PUBLIC_APP_URL: "${NEXT_PUBLIC_APP_URL:-https://portfolio.stelltech.ai}"
-      NEXT_PUBLIC_TERMS_URL: "${NEXT_PUBLIC_TERMS_URL:-}"
-      NEXT_PUBLIC_PRIVACY_URL: "${NEXT_PUBLIC_PRIVACY_URL:-}"
-      NEXT_PUBLIC_DISABLE_SW: "${NEXT_PUBLIC_DISABLE_SW:-}"
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: "${NEXT_PUBLIC_SUPABASE_URL:?Set NEXT_PUBLIC_SUPABASE_URL}"
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: "${NEXT_PUBLIC_SUPABASE_ANON_KEY:?Set NEXT_PUBLIC_SUPABASE_ANON_KEY}"
+        NEXT_PUBLIC_SITE_URL: "${NEXT_PUBLIC_SITE_URL:-https://portfolio.stelltech.ai}"
+        NEXT_PUBLIC_APP_URL: "${NEXT_PUBLIC_APP_URL:-https://portfolio.stelltech.ai}"
+        NEXT_PUBLIC_TERMS_URL: "${NEXT_PUBLIC_TERMS_URL:-}"
+        NEXT_PUBLIC_PRIVACY_URL: "${NEXT_PUBLIC_PRIVACY_URL:-}"
+        NEXT_PUBLIC_DISABLE_SW: "${NEXT_PUBLIC_DISABLE_SW:-}"
+    image: portfolio-app:latest
+    env_file: .env
     environment:
       NEXT_PUBLIC_APP_URL: "${NEXT_PUBLIC_APP_URL:-https://portfolio.stelltech.ai}"
       SUPABASE_SERVICE_ROLE_KEY: "${SUPABASE_SERVICE_ROLE_KEY:?Set SUPABASE_SERVICE_ROLE_KEY}"
       ENCRYPTION_KEY: "${ENCRYPTION_KEY:?Set ENCRYPTION_KEY}"
       HOSTNAME: "0.0.0.0"
       PORT: "3000"
-    image: portfolio-app:latest
-    env_file: .env
     shm_size: 256mb
     init: true
     mem_limit: 1g
