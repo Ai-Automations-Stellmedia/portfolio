@@ -67,7 +67,7 @@ See [LICENSE](./LICENSE.md) for full terms.
 - **Clone the repo** — `git clone https://github.com/tdavidson/portfolio.git && cd portfolio && npm install`
 - **Create a Supabase project** — Copy your project URL, anon key, and service role key
 - **Generate an encryption key** — openssl rand -hex 32
-- **Deploy to Netlify or Vercel** — One-click deploy buttons available in the full guide
+- **Deploy to Netlify, Vercel, or Docker** — One-click deploy buttons and Docker Compose instructions available in the [full guide](./DOCS.md#step-4-deploy-the-app)
 - **Configure auth and add your first user** — Set Supabase redirect URLs and whitelist your email
 - **Add an AI key, or skip it and use your own assistant, and forward your first email** — Anthropic, OpenAI or OpenRouter on the server, or Claude or ChatGPT over MCP with no key: [AI without a server key](./DOCS.md#ai-without-a-server-key)
 - **Set up your fund** — entity, LPs, investments, then open the books, with CSV templates: [Setting up a new fund](./DOCS.md#setting-up-a-new-fund)

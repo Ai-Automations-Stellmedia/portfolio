@@ -107,7 +107,30 @@ Building on your own host needs memory: on a 4 GB machine, `next build` can comp
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftdavidson%2Fportfolio&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY,ENCRYPTION_KEY,NEXT_PUBLIC_APP_URL&envDescription=Required%20environment%20variables%20for%20Portfolio&project-name=portfolio)
 
-After deploying, add these environment variables in your hosting platform's settings:
+**Option C: Docker Compose**
+
+Install Docker Engine with the Compose plugin. Complete Steps 2 and 3 above, then create your configuration:
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in the Supabase URL and anon key, service role key, encryption key, and `NEXT_PUBLIC_SITE_URL` in `.env.local`. Set `NEXT_PUBLIC_APP_URL` to the same URL. Use `http://localhost:3000` for a local trial or your public HTTPS origin for production. Keep the encryption key stable across rebuilds and restarts.
+
+```bash
+docker compose --env-file .env.local up -d --build
+docker compose logs -f app
+```
+
+Open http://localhost:3000. The port binds to the host's loopback interface; for production, put an HTTPS reverse proxy on that host in front of port 3000 and complete Step 5 below. Supabase remains external: this Compose file does not create a database or apply migrations. If Supabase runs on the same machine, `localhost` inside the app container points to the container itself; use a Supabase address reachable from both the container and users' browsers.
+
+The image uses the existing Next.js production server, runs as a non-root user, and includes system Chromium for PDF exports. Building requires network access to npm, Debian packages, and Google Fonts. Public `NEXT_PUBLIC_*` settings are passed at build time; rebuild when they change ([Next.js environment variables](https://nextjs.org/docs/app/guides/environment-variables)). Server secrets are loaded from `.env.local` only at runtime; environment files are excluded from the build context. Do not put server secrets in build arguments.
+
+Schedule every entry in `vercel.json`'s `crons` array through your host's cron or another scheduler, using its listed schedule in UTC. Each job makes a GET request to its path with `Authorization: Bearer <CRON_SECRET>`; set a strong `CRON_SECRET` in `.env.local`. Docker does not run Vercel Cron. For example, the memo agent worker runs every three minutes and calls `/api/cron/memo-agent-worker`. Without these jobs, background processing and scheduled reminders will not run reliably.
+
+Stop with `docker compose --env-file .env.local down`. App data stays in Supabase; back up that database, storage, and your encryption key separately.
+
+For Netlify or Vercel, after deploying, add these environment variables in your hosting platform's settings:
 
 ```bash
 # Required
