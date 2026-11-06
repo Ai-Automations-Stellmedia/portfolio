@@ -20,12 +20,6 @@ services:
       PORT: "3000"
     image: portfolio-app:latest
     env_file: .env
-    environment:
-      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://portfolio.stelltech.ai}
-      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KE_KEY}
-      ENCRYPTION_KEY: ${ENCRYPTION_KEY:?Set ENCRYPTION_KEY}
-      HOSTNAME: 0.0.0.0
-      PORT: 3000
     shm_size: 256mb
     init: true
     mem_limit: 1g
