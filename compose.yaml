@@ -1,3 +1,5 @@
+name: portfolio
+
 services:
   app:
     build:
@@ -5,16 +7,33 @@ services:
       args:
         NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL:?Set NEXT_PUBLIC_SUPABASE_URL}
         NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY:?Set NEXT_PUBLIC_SUPABASE_ANON_KEY}
-        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:?Set NEXT_PUBLIC_SITE_URL}
-        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-${NEXT_PUBLIC_SITE_URL}}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://portfolio.stelltech.ai}
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https:
         NEXT_PUBLIC_TERMS_URL: ${NEXT_PUBLIC_TERMS_URL:-}
-        NEXT_PUBLIC_PRIVACY_URL: ${NEXT_PUBLIC_PRIVACY_URL:-}
+        NEXT_PUBLIC_PRIVACY_URL: ${NEXT_PUBLIC_PRIVACY_URL
         NEXT_PUBLIC_DISABLE_SW: ${NEXT_PUBLIC_DISABLE_SW:-}
-    env_file: .env.local
+    image: portfolio-app:latest
+    env_file: .env
     environment:
-      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-${NEXT_PUBLIC_SITE_URL}}
-      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:?Set SUPABASE_SERVICE_ROLE_KEY}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://portfolio.stelltech.ai}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KE_KEY}
       ENCRYPTION_KEY: ${ENCRYPTION_KEY:?Set ENCRYPTION_KEY}
+      HOSTNAME: 0.0.0.0
+      PORT: 3000
     shm_size: 256mb
     init: true
+    mem_limit: 1g
     restart: unless-stopped
+    networks: [proxy]
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=loops-proxy
+      - traefik.http.routers.portfolio.rule=Host(`portfolio.stelltech.ai`)
+      - traefik.http.routers.portfolio.entrypoints=websecure
+      - traefik.http.routers.portfolio.tls.certresolver=le
+      - traefik.http.services.portfolio.loadbalancer.server.port=3000
+
+networks:
+  proxy:
+    external: true
+    name: loops-proxy
